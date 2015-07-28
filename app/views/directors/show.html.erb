@@ -1,0 +1,9 @@
+<h1><%= @director.name %></h1>
+
+
+<h4>Filmography:</h4>
+
+<!-- CHALLENGE #2: Show the list of movies here  -->
+<% @director.movies.each do |movie| %>
+  <h4><%= link_to movie.title, "/movies/#{movie.id}" %></h4>
+<% end %>
