@@ -34,6 +34,19 @@ class MoviesController < ApplicationController
     else
       @movies = Movie.all
     end
+
+    respond_to do |format|
+      format.html do
+        render 'index'
+      end
+      format.json do
+        render :json => @movies
+      end
+      format.xml do
+        render :xml => @movies
+      end
+    end
+
   end
 
   def destroy
@@ -44,6 +57,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find_by(:id => params["id"])
+    cookies["movie_id"] = @movie.id
   end
 
 end
